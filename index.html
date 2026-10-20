@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linguify</title>
+<meta name="description" content="Linguify: βοηθός γλωσσολογίας με τεχνητή νοημοσύνη για επιμέλεια, τοπικοποίηση, αρχαία ελληνικά και λατινικά.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{--accent:#2F5BE0;--ink:#101828;--muted:#3B4A63;--line:#D9DEE7;--bg:#F5F6F8;--serif:'Literata',Georgia,serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Manrope',system-ui,sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}
+a.link:hover{text-decoration:underline}
+a.btn:hover{filter:brightness(1.12)}
+.wrap{max-width:1160px;margin:0 auto;padding-left:32px;padding-right:32px}
+header.wrap{padding-top:24px;padding-bottom:24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:26px;font-weight:600;letter-spacing:-0.01em}
+.logo span{color:var(--accent)}
+nav{display:flex;flex-wrap:wrap;gap:24px;align-items:center;font-size:15px;font-weight:500}
+.lang{display:flex;gap:4px;background:#E6E9F0;border-radius:999px;padding:4px}
+.lang button{border:0;cursor:pointer;font:inherit;font-size:13px;font-weight:700;letter-spacing:.06em;min-width:44px;min-height:36px;border-radius:999px;padding:0 12px;background:transparent;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.btn{display:inline-block;font-weight:700;color:#fff;border-radius:999px}
+.btn-dark{background:var(--ink);padding:12px 22px;font-size:15px;font-weight:600}
+.btn-accent{background:var(--accent);font-size:17px;padding:16px 30px}
+.hero{padding-top:56px;padding-bottom:88px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr));gap:56px;align-items:center}
+.hero-text{display:flex;flex-direction:column;gap:28px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(40px,6vw,68px);line-height:1.06;letter-spacing:-.02em;text-wrap:balance}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{margin:0;font-size:19px;max-width:30em;color:var(--muted);text-wrap:pretty}
+.actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.actions .link{font-weight:600;font-size:16px;padding:12px 4px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:22px;box-shadow:0 24px 48px -24px rgba(16,24,40,.18)}
+.card-head{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card-head span:last-child{color:var(--accent)}
+.stack{display:flex;flex-direction:column;gap:8px}
+.stack.g12{gap:12px}
+.label{font-size:13px;font-weight:600;color:#5A6678}
+.label.acc{color:var(--accent)}
+.q{margin:0;font-family:var(--serif);font-size:20px;line-height:1.45;background:#EEF1F7;border-radius:14px;padding:16px 18px}
+.card p.a{margin:0;font-size:16px;color:#1D2939;text-wrap:pretty}
+.quote{margin:0;font-family:var(--serif);font-size:19px;line-height:1.5;background:#DDE8FF;color:#17338F;border-radius:12px;padding:12px 16px}
+.langs{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.langs .wrap{padding-top:40px;padding-bottom:40px;display:flex;flex-wrap:wrap;gap:24px 40px;align-items:center}
+.langs-title{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);flex:0 0 auto}
+.chips{display:flex;flex-wrap:wrap;gap:10px 12px;flex:1 1 420px}
+.chips span{font-family:var(--serif);font-size:19px;padding:6px 16px;border:1px solid var(--line);border-radius:999px}
+.chips span.more{font-family:'Manrope',sans-serif;font-size:15px;font-weight:600;color:var(--accent);border:0;padding:9px 4px}
+.features{background:var(--ink);color:var(--bg)}
+.features .wrap{padding-top:96px;padding-bottom:96px;display:flex;flex-direction:column;gap:56px}
+h2{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.4vw,48px);line-height:1.12;letter-spacing:-.015em;max-width:16em;text-wrap:balance}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:40px}
+.feat{display:flex;flex-direction:column;gap:14px;border-top:2px solid #6C93FF;padding-top:24px}
+.num{font-size:13px;font-weight:700;letter-spacing:.14em;color:#9DB6FF}
+h3{margin:0;font-family:var(--serif);font-weight:600;font-size:26px}
+.feat p{margin:0;color:#C9D1E0;font-size:17px;text-wrap:pretty}
+.closing{padding-top:104px;padding-bottom:104px;display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+.closing h2{font-size:clamp(32px,4.6vw,52px);line-height:1.1;max-width:15em}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-top:28px;padding-bottom:40px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:14px;color:#5A6678}
+.flogo{font-family:var(--serif);font-size:17px;color:var(--ink);font-weight:600}
+.contact{display:flex;flex-wrap:wrap;gap:6px 16px}
+.contact a{color:var(--ink);font-weight:600}
+@media (max-width:520px){.wrap{padding-left:20px;padding-right:20px}.card{padding:22px}}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+<a href="#top" class="logo">Linguify<span>.</span></a>
+<nav>
+<a class="link" href="#dynatotites" data-i18n="navFeatures">Δυνατότητες</a>
+<a class="link" href="#paradeigma" data-i18n="navExample">Παράδειγμα</a>
+<div class="lang" role="group" aria-label="Language">
+<button type="button" data-lang="el" aria-pressed="true">EL</button>
+<button type="button" data-lang="en" aria-pressed="false">EN</button>
+</div>
+<a class="btn btn-dark" href="https://www.chatbase.co/FcdPWVYfXQ59_XoadVj5d/help" target="_blank" rel="noopener" data-i18n="navCta">Δοκίμασε το</a>
+</nav>
+</header>
+
+<main>
+<section id="top" class="wrap hero">
+<div class="hero-text">
+<div class="eyebrow" data-i18n="eyebrow">Βοηθός γλωσσολογίας με τεχνητή νοημοσύνη</div>
+<h1><span data-i18n="h1a">Ένας βοηθός που ξέρει </span><em data-i18n="h1em">κάθε γλώσσα</em><span data-i18n="h1b"> πραγματικά.</span></h1>
+<p class="lede" data-i18n="lede">Το Linguify επιμελείται κείμενα, τα προσαρμόζει σε άλλη γλώσσα και αγορά, και εξηγεί τα αρχαία ελληνικά και τα λατινικά. Και σου λέει πάντα το γιατί.</p>
+<div class="actions">
+<a class="btn btn-accent" href="https://www.chatbase.co/FcdPWVYfXQ59_XoadVj5d/help" target="_blank" rel="noopener" data-i18n="cta">Δοκίμασε το Linguify</a>
+<a class="link" href="#paradeigma" data-i18n="seeExample">Δες ένα παράδειγμα →</a>
+</div>
+</div>
+
+<div id="paradeigma" class="card">
+<div class="card-head"><span data-i18n="demoTitle">Συντακτική ανάλυση</span><span data-i18n="demoTags">Λατινικά · Αρχαία ελληνικά</span></div>
+<div class="stack">
+<div class="label" data-i18n="demoQLabel">Ερώτηση</div>
+<p class="q" data-i18n="demoQ">Πώς αναλύεται συντακτικά το «Caesar, urbe capta, in Galliam rediit» και πώς θα αποδιδόταν στα αρχαία ελληνικά;</p>
+</div>
+<div class="stack g12">
+<div class="label acc">Linguify</div>
+<p class="a" data-i18n="demoA1">Το «urbe capta» είναι ablativus absolutus: ουσιαστικό και μετοχή παρακειμένου παθητικής φωνής σε αφαιρετική, που δεν εξαρτάται συντακτικά από κάποια λέξη της πρότασης. Εδώ δηλώνει το προτερόχρονο: «Αφού κατελήφθη η πόλη, ο Καίσαρας επέστρεψε στη Γαλατία».</p>
+<p class="quote" lang="la">Caesar, urbe capta, in Galliam rediit.</p>
+<p class="a" data-i18n="demoA2">Η αντίστοιχη ελληνική δομή είναι η γενική απόλυτη:</p>
+<p class="quote" lang="grc">Καῖσαρ, τῆς πόλεως ἁλούσης, εἰς Γαλατίαν ἐπανῆλθεν.</p>
+</div>
+</div>
+</section>
+
+<section class="langs">
+<div class="wrap">
+<div class="langs-title" data-i18n="langsTitle">Ενδεικτικά</div>
+<div class="chips">
+<span>Ελληνικά</span><span>English</span><span>Français</span><span>Deutsch</span><span>Español</span><span>Italiano</span><span>Русский</span><span dir="rtl">العربية</span><span>中文</span><span>Latina</span><span>Ἑλληνική</span>
+<span class="more" data-i18n="langsMore">…και κάθε άλλη γλώσσα</span>
+</div>
+</div>
+</section>
+
+<section id="dynatotites" class="features">
+<div class="wrap">
+<h2 data-i18n="featuresTitle">Τρεις δουλειές. Μία γλώσσα να τις κάνει σωστά.</h2>
+<div class="grid">
+<div class="feat"><div class="num">01</div><h3 data-i18n="f1h">Επιμέλεια</h3><p data-i18n="f1p">Ορθογραφία, σύνταξη, ύφος και συνέπεια. Κάθε αλλαγή συνοδεύεται από τον κανόνα της, για να μαθαίνεις ενώ διορθώνεις.</p></div>
+<div class="feat"><div class="num">02</div><h3 data-i18n="f2h">Τοπικοποίηση</h3><p data-i18n="f2p">Όχι κατά λέξη μετάφραση, αλλά κείμενο που διαβάζεται φυσικά στην αγορά και το κοινό για το οποίο προορίζεται.</p></div>
+<div class="feat"><div class="num">03</div><h3 data-i18n="f3h">Αρχαία ελληνικά και λατινικά</h3><p data-i18n="f3p">Μορφολογική ανάλυση, συντακτική εξήγηση και μετάφραση σε αρχαία ελληνικά και λατινικά, χωρίς να χάνεται η λογική του κειμένου.</p></div>
+</div>
+</div>
+</section>
+
+<section class="wrap closing">
+<h2 data-i18n="closing">Γράψε το κείμενό σου. Το Linguify θα σου πει το γιατί κάθε διόρθωσης.</h2>
+<a class="btn btn-accent" href="https://www.chatbase.co/FcdPWVYfXQ59_XoadVj5d/help" target="_blank" rel="noopener" data-i18n="cta">Δοκίμασε το Linguify</a>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<span class="flogo">Linguify.</span>
+<span class="contact"><span data-i18n="contact">Νίκος Μιχαηλάκης</span><a class="link" href="mailto:nickmichailakis@hotmail.com">nickmichailakis@hotmail.com</a></span>
+</div>
+</footer>
+
+<script>
+(function () {
+  var EN = {
+    navFeatures: 'Features', navExample: 'Example', navCta: 'Try it',
+    eyebrow: 'AI linguistics assistant',
+    h1a: 'An assistant that really knows ', h1em: 'every language', h1b: '.',
+    lede: 'Linguify edits your texts, adapts them to another language and market, and explains Ancient Greek and Latin. And it always tells you why.',
+    cta: 'Try Linguify', seeExample: 'See an example →',
+    demoTitle: 'Syntactic analysis', demoTags: 'Latin · Ancient Greek', demoQLabel: 'Question',
+    demoQ: 'How is “Caesar, urbe capta, in Galliam rediit” parsed, and how would it be rendered in Ancient Greek?',
+    demoA1: '“Urbe capta” is an ablativus absolutus: a noun and a perfect passive participle in the ablative, grammatically independent of any word in the sentence. Here it marks an earlier action: “After the city was captured, Caesar returned to Gaul.”',
+    demoA2: 'The Greek counterpart is the genitive absolute:',
+    langsTitle: 'For example', langsMore: '…and every other language',
+    featuresTitle: 'Three jobs. One language to do them right.',
+    f1h: 'Editing', f1p: 'Spelling, syntax, style and consistency. Every change comes with its rule, so you learn while you correct.',
+    f2h: 'Localisation', f2p: 'Not word-for-word translation, but text that reads naturally in the market and for the audience it is meant for.',
+    f3h: 'Ancient Greek and Latin', f3p: 'Morphological analysis, syntactic explanation and translation into Ancient Greek and Latin, without losing the logic of the text.',
+    closing: 'Write your text. Linguify will tell you why each correction was made.',
+    contact: 'Nikos Michailakis'
+  };
+  var els = document.querySelectorAll('[data-i18n]');
+  var EL = {};
+  els.forEach(function (e) { EL[e.getAttribute('data-i18n')] = e.textContent; });
+  var btns = document.querySelectorAll('.lang button');
+  function setLang(l) {
+    var dict = l === 'en' ? EN : EL;
+    els.forEach(function (e) { e.textContent = dict[e.getAttribute('data-i18n')]; });
+    document.documentElement.lang = l;
+    btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === l)); });
+    try { localStorage.setItem('linguify-lang', l); } catch (x) {}
+  }
+  btns.forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); }); });
+  var saved = null;
+  try { saved = localStorage.getItem('linguify-lang'); } catch (x) {}
+  if (saved === 'en') setLang('en');
+})();
+</script>
+</body>
+</html>
